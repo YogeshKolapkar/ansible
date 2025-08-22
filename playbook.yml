@@ -1,13 +1,14 @@
 ---
 - name: Install Apache
- hosts: [ansiblegroups]
- become: yes
- tasks:
- - name: Install Apache
- ansible.builtin.package:
- name: apache2
- state: present
- - name: copy html
- ansible.builtin.copy:
- src: index.html
- dest: /var/www/html/
+  hosts: ansiblegroups
+  become: yes
+  tasks:
+    - name: Install Apache
+      ansible.builtin.package:
+        name: apache2
+        state: present
+
+    - name: Copy index.html
+      ansible.builtin.copy:
+        src: index.html
+        dest: /var/www/html/index.html
